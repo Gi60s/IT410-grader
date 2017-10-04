@@ -10,7 +10,7 @@ const sub = args[1];
 
 if (!cli.hasOwnProperty(cmd) || !cli[cmd].hasOwnProperty(sub)) {
     console.log(`
-Please try one of the following commands:
+Try one of the following commands:
 
 it410 admin create                      - create a new assignment
 it410 admin publish                     - publish a created assignment
