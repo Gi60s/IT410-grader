@@ -1,32 +1,21 @@
 {
-  "name": "it410-grader",
+  "name": "client",
   "version": "1.0.0",
-  "description": "Grade IT 410 assignments",
+  "description": "Client for downloading, testing, and submitting assignments.",
+  "bin": {
+    "it410": "index.js"
+  },
   "main": "index.js",
-  "bin": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Gi60s/IT410-grader.git"
-  },
-  "author": "James Speirs <james.speirs@gmail.com>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/Gi60s/IT410-grader/issues"
-  },
-  "homepage": "https://github.com/Gi60s/IT410-grader#readme",
-  "dependencies": {
-    "archiver": "^2.0.0",
-    "decompress": "^4.2.0",
-    "inquirer": "^3.2.2",
-    "request": "^2.81.0",
-    "request-promise-native": "^1.0.4"
-  },
   "private": true,
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^4.0.0"
+  "author": "James Speirs <james.speirs@gmail.com>",
+  "dependencies": {
+    "archiver": "^2.1.0",
+    "decompress": "^4.2.0",
+    "inquirer": "^4.0.1",
+    "request": "^2.83.0",
+    "uuid": "^3.1.0"
   }
 }
