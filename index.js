@@ -26,6 +26,7 @@ Commands:
 
   exit                     Log out
   get <project> [dest]     Download a project to the specified directory. Defaults to current directory.
+  host [host_url]          Set the host URL to run tests against.
   list                     List projects
   help                     Output usage information
   submit <project> [src]   Test and submit a project. Defaults to using the current directory as the project.
@@ -36,6 +37,7 @@ Commands:
             switch (command) {
                 case 'exit':
                 case 'get':
+                case 'host':
                 case 'list':
                 case 'submit':
                 case 'test':
@@ -69,6 +71,7 @@ Commands:
 
   authenticate <token>     Log in.
   get <project> [dest]     Download a project to the specified directory. Defaults to current directory.
+  host [host_url]          Set the host URL to run tests against.
   list                     List projects
   help                     Output usage information
 `;
@@ -77,6 +80,7 @@ Commands:
 
                 case 'authenticate':
                 case 'get':
+                case 'host':
                 case 'list':
                     return request[command]();
 

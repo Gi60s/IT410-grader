@@ -6,10 +6,25 @@ const path          = require('path');
 const Request       = require('request');
 const tempDir       = require('os').tmpdir();
 
-const host = 'http://localhost:7800/';
-const baseUrl = host + 'api';
+const appDataPath = path.resolve(tempDir, 'it410.dat');
 const cookiePath = path.resolve(tempDir, 'it410.cookie');
+const defaultHost = 'http://james.darktech.org';
 const zipPath = path.resolve(tempDir, 'it410.zip');
+
+const app = appData();
+const host = app || defaultHost;
+const baseUrl = host + 'api';
+
+exports.appData = function() {
+    const input = process.argv[3];
+    if (!input) {
+        appData(input);
+        console.log('Host changed from ' + host + ' to ' + input);
+    } else {
+        appData(defaultHost);
+        console.log('Host changed to default host: ' + defaultHost);
+    }
+};
 
 exports.authenticate = function() {
     if (!process.argv[3]) return Promise.reject(Error('Missing required authentication id: token'));
@@ -129,6 +144,24 @@ exports.test = function() {
 exports.submit = function() {
     test(true);
 };
+
+function appData(value) {
+    if (arguments.length > 0) {
+        try {
+            fs.writeFileSync(appDataPath, value);
+        } catch (err) {
+            console.error('Unable to write app data: ' + err.message);
+        }
+
+    } else {
+        try {
+            value = fs.readFileSync(appDataPath, 'utf8');
+        } catch (err) {
+            value = null;
+        }
+        return value;
+    }
+}
 
 function getCookie() {
     try {
