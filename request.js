@@ -12,7 +12,7 @@ const defaultHost = 'http://james.darktech.org';
 const zipPath = path.resolve(tempDir, 'it410.zip');
 
 const app = appData();
-const host = app || defaultHost;
+const host = (app || defaultHost).replace(/\/$/, '') + '/';
 const baseUrl = host + 'api';
 
 exports.appData = function() {
