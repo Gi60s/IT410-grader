@@ -323,11 +323,8 @@ function test(submit) {
                         fs.createReadStream(zipPath).pipe(req);
                         break;
 
-                    case 404:
-                        return deferred.reject(Error('Project does not exist: ' + project));
-
                     default:
-                        return deferred.reject(Error('Cannot test project: ' + res.body));
+                        return deferred.reject(Error('Cannot test project: (' + res.statusCode + ') ' + res.body));
                 }
             });
         });
