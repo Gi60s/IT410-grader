@@ -7,6 +7,7 @@ process.on('unhandledRejection', err => {
 const request       = require('./request');
 
 request.initialize()
+    .catch(() => null)
     .then(cookie => {
         const command = process.argv[2];
 
@@ -37,11 +38,13 @@ Commands:
             switch (command) {
                 case 'exit':
                 case 'get':
-                case 'host':
                 case 'list':
                 case 'submit':
                 case 'test':
                     return request[command]();
+
+                case 'host':
+                    return request.appData();
 
                 case 'help':
                 case '-h':
@@ -80,9 +83,11 @@ Commands:
 
                 case 'authenticate':
                 case 'get':
-                case 'host':
                 case 'list':
                     return request[command]();
+
+                case 'host':
+                    return request.appData();
 
                 case 'help':
                 case '-h':

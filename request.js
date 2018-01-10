@@ -17,7 +17,7 @@ const baseUrl = host + 'api';
 
 exports.appData = function() {
     const input = process.argv[3];
-    if (!input) {
+    if (input) {
         appData(input);
         console.log('Host changed from ' + host + ' to ' + input);
     } else {
